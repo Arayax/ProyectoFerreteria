@@ -1,0 +1,4 @@
+name: proyectoferreteria
+recipe: lamp
+config:
+  webroot: .
