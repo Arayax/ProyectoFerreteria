@@ -10,7 +10,7 @@
         <a class="nav-link" href="../index.php">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../Galeria.php">Galaria</a>
+        <a class="nav-link" href="../login.php">Log in</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
