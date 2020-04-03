@@ -1,5 +1,5 @@
 <?php
-//require 'bootstrap.php';
+require 'bootstrap.php';
 
 $user = new Users();
 $user->logout();

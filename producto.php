@@ -27,7 +27,7 @@ SQL;
     public function create(): string {
         $query = 'INSERT INTO producto (descripcion_Prod, Precio, cant_Producto, categoria_Id) VALUES (?, ?, ?, ?)';
         $stmt = $this->database->prepare($query);
-        $stmt->bind_param('ss', $this->request['descripcion_Prod'], $this->request['Precio'], $this->request['cant_Producto'], $this->request['categoria_Id']);
+        $stmt->bind_param('siii', $this->request['descripcion_Prod'], $this->request['Precio'], $this->request['cant_Producto'], $this->request['categoria_Id']);
 
         $stmt->execute();
         $stmt->close();
@@ -37,7 +37,7 @@ SQL;
 
     
     public function findAll(): array {
-        $query = 'SELECT id, descripcion_Prod, Precio, cant_Producto, categoria_Id FROM producto';
+        $query = 'SELECT Id_Producto, descripcion_Prod, Precio, cant_Producto, categoria_Id FROM producto';
         $result = $this->database->query($query);
 
         $records = [];
@@ -50,7 +50,7 @@ SQL;
 
    
     public function findById(): object {
-        $query = "SELECT id, descripcion_Prod, Precio, cant_Producto, categoria_Id FROM producto WHERE id = " . $this->request['id'];
+        $query = "SELECT Id_Producto, descripcion_Prod, Precio, cant_Producto, categoria_Id FROM producto WHERE id = " . $this->request['id'];
         $result = $this->database->query($query);
 
         return $result->fetch_object();
@@ -64,6 +64,7 @@ SQL;
    
     public function updateItem() {
         if(!empty($this->request['descripcion_Prod']) && !empty($this->request['Precio'])  && !empty($this->request['cant_Producto']) && !empty($this->request['categoria_Id'])) {
+            
           $query = "UPDATE producto SET descripcion_Prod = '{$this->request['descripcion_Prod']}', Precio = '{$this->request['Precio']}' , cant_Producto = '{$this->request['cant_Producto']}' , categoria_Id = '{$this->request['categoria_Id']}' WHERE id = {$this->request['id']}";
           $this->database->query($query);
 

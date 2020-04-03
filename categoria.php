@@ -7,13 +7,13 @@ class categoria extends Entity
     protected function init(): void {
         
         $query = <<<SQL
-CREATE TABLE categoriaProd (
+CREATE TABLE IF NOT EXISTS categoriaProd (
   Id_categoria int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   descripcion_Prod varchar(255)
 ) 
 
 SQL;
-        // Throw an exception when query fails.
+       
         if(!$this->database->query($query)) {
             throw new \Exception($this->database->error);
         }
@@ -22,7 +22,7 @@ SQL;
     public function create(): string {
         $query = 'INSERT INTO categoriaProd (descripcion_Prod) VALUES (?)';
         $stmt = $this->database->prepare($query);
-        $stmt->bind_param('ss', $this->request['descripcion_Prod']);
+        $stmt->bind_param('s', $this->request['descripcion_Prod']);
 
         $stmt->execute();
         $stmt->close();
@@ -32,7 +32,7 @@ SQL;
 
     
     public function findAll(): array {
-        $query = 'SELECT id, descripcion_Prod FROM categoriaProd';
+        $query = 'SELECT Id_categoria, descripcion_Prod FROM categoriaProd';
         $result = $this->database->query($query);
 
         $records = [];
@@ -45,7 +45,7 @@ SQL;
 
    
     public function findById(): object {
-        $query = "SELECT id, descripcion_Prod FROM categoriaProd WHERE id = " . $this->request['id'];
+        $query = "SELECT Id_categoria, descripcion_Prod FROM categoriaProd WHERE id = " . $this->request['id'];
         $result = $this->database->query($query);
 
         return $result->fetch_object();
