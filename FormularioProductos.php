@@ -46,12 +46,6 @@ if($user->isAnonymous()) {
     <label for="DescripcionProd">Descripcion del Producto:</label>
     <input type="text" class="form-control" id="descripcion_Prod" name="descripcion_Prod" placeholder="Descripcion del Producto" autocomplete="off" value="<?php echo isset($item) ? $item->descripcion_Prod : null ?>" >
 
- <?php if (!empty($_GET['descripcion_Prod'])): ?>
-<div class="alert alert-danger" role="alert">
-  Ingrese la Descripcion
-</div>
-
- <?php endif; ?>
 </div>
   <div class="form-group col-md-4 col-sm-4">
   

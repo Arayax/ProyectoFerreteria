@@ -3,10 +3,7 @@ require_once 'bootstrap.php';
 
 $user = new Users();
 
-if($user->isAnonymous()) {
 
-    header('Location: /login.php');
-}
 ?>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
@@ -21,17 +18,20 @@ if($user->isAnonymous()) {
         <a class="nav-link" href="../index.php">Inicio <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="login" href="../login.php">Log in</a>
+        <a class="nav-link"  id="login" href="../login.php">Log in</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"   id="logout" href="../logout.php">Log out</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"   id="logout" href="../FormularioContactos.php">Contactanos</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
 
-          <a href="../FormularioProductos.php" class="dropdown-item" href="#">Nuevo Producto</a>
-          <a href="../FormularioCategorias.php" class="dropdown-item" href="#">Nueva Categoria</a>
+          <a href="../indexProductos.php" class="dropdown-item" href="#">Productos</a>
+          <a href="../indexCategoria.php" class="dropdown-item" href="#">Categorias</a>
          
         </div>
       </li>
