@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: Apr 02, 2020 at 06:51 AM
+-- Generation Time: Apr 04, 2020 at 11:50 PM
 -- Server version: 5.7.29
 -- PHP Version: 7.2.2
 
@@ -33,19 +33,49 @@ CREATE TABLE `categoriaProd` (
   `descripcion_Prod` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `categoriaProd`
+--
+
+INSERT INTO `categoriaProd` (`Id_categoria`, `descripcion_Prod`) VALUES
+(1, 'golpeo'),
+(2, 'atornillar'),
+(3, 'unión');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Producto`
+-- Table structure for table `contacto`
 --
 
-CREATE TABLE `Producto` (
+CREATE TABLE `contacto` (
+  `Id_contacto` int(10) UNSIGNED NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `mensaje` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `producto`
+--
+
+CREATE TABLE `producto` (
   `Id_Producto` int(10) UNSIGNED NOT NULL,
   `descripcion_Prod` varchar(255) NOT NULL,
   `Precio` float NOT NULL,
   `cant_Producto` int(11) NOT NULL,
   `categoria_Id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `producto`
+--
+
+INSERT INTO `producto` (`Id_Producto`, `descripcion_Prod`, `Precio`, `cant_Producto`, `categoria_Id`) VALUES
+(1, 'Martillo', 15000, 5, 1),
+(3, 'Goma blanca', 3000, 5, 3),
+(6, 'Clavos', 2500, 250, 3);
 
 -- --------------------------------------------------------
 
@@ -60,6 +90,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`) VALUES
+(1, 'araya8025@gmail.com', '202cb962ac59075b964b07152d234b70');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -70,9 +107,15 @@ ALTER TABLE `categoriaProd`
   ADD PRIMARY KEY (`Id_categoria`);
 
 --
--- Indexes for table `Producto`
+-- Indexes for table `contacto`
 --
-ALTER TABLE `Producto`
+ALTER TABLE `contacto`
+  ADD PRIMARY KEY (`Id_contacto`);
+
+--
+-- Indexes for table `producto`
+--
+ALTER TABLE `producto`
   ADD PRIMARY KEY (`Id_Producto`),
   ADD KEY `categoria_Id` (`categoria_Id`);
 
@@ -90,29 +133,35 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categoriaProd`
 --
 ALTER TABLE `categoriaProd`
-  MODIFY `Id_categoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_categoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `Producto`
+-- AUTO_INCREMENT for table `contacto`
 --
-ALTER TABLE `Producto`
-  MODIFY `Id_Producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `contacto`
+  MODIFY `Id_contacto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `Id_Producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `Producto`
+-- Constraints for table `producto`
 --
-ALTER TABLE `Producto`
-  ADD CONSTRAINT `Producto_ibfk_1` FOREIGN KEY (`categoria_Id`) REFERENCES `categoriaProd` (`Id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `producto`
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`categoria_Id`) REFERENCES `categoriaProd` (`Id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
