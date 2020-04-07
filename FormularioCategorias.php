@@ -41,7 +41,9 @@ if($user->isAnonymous()) {
 <br>
 <h2>Nueva Categoria<h2>
 <form action="FormularioCategorias.php" method="get">
-
+<?php if(isset($item)): ?>
+        <input type="hidden" name="id" value="<?php echo $item->Id_categoria?>">
+    <?php endif; ?>
   <div class="form-group col-md-4 col-sm-4">
 
     <label for="descripcion_Prod">Categoria del producto</label>

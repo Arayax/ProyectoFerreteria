@@ -40,7 +40,9 @@ if($user->isAnonymous()) {
 <br>
 <h2>Nuevo producto<h2>
 <form action="FormularioProductos.php" method="get">
-
+<?php if(isset($item)): ?>
+        <input type="hidden" name="id" value="<?php echo $item->Id_Producto ?>">
+    <?php endif; ?>
   <div class="form-group col-md-4 col-sm-4">
 
     <label for="DescripcionProd">Descripcion del Producto:</label>

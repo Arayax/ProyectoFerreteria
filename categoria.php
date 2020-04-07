@@ -9,7 +9,7 @@ class categoria extends Entity
         $query = <<<SQL
 CREATE TABLE IF NOT EXISTS categoriaProd (
   Id_categoria int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  descripcion_Prod varchar(255)
+  categoria varchar(255)
 ) 
 
 SQL;
@@ -20,9 +20,9 @@ SQL;
     }
 
     public function create(): string {
-        $query = 'INSERT INTO categoriaProd (descripcion_Prod) VALUES (?)';
+        $query = 'INSERT INTO categoriaProd (categoria) VALUES (?)';
         $stmt = $this->database->prepare($query);
-        $stmt->bind_param('s', $this->request['descripcion_Prod']);
+        $stmt->bind_param('s', $this->request['categoria']);
 
         $stmt->execute();
         $stmt->close();
@@ -32,7 +32,7 @@ SQL;
 
     
     public function findAll(): array {
-        $query = 'SELECT Id_categoria, descripcion_Prod FROM categoriaProd';
+        $query = 'SELECT Id_categoria, categoria FROM categoriaProd';
         $result = $this->database->query($query);
 
         $records = [];
@@ -45,7 +45,7 @@ SQL;
 
    
     public function findById(): object {
-        $query = "SELECT Id_categoria, descripcion_Prod FROM categoriaProd WHERE id = " . $this->request['id'];
+        $query = "SELECT Id_categoria, categoria FROM categoriaProd WHERE Id_categoria = " . $this->request['id'];
         $result = $this->database->query($query);
 
         return $result->fetch_object();
@@ -53,13 +53,13 @@ SQL;
 
     
     public function deleteById($id): bool {
-        return $this->database->query("DELETE FROM stuff WHERE id={$id}");
+        return $this->database->query("DELETE FROM categoriaProd WHERE Id_categoria={$id}");
     }
 
    
     public function updateItem() {
-        if(!empty($this->request['descripcion_Prod'])) {
-          $query = "UPDATE categoriaProd SET descripcion_Prod = '{$this->request['descripcion_Prod']}' WHERE id = {$this->request['id']}";
+        if(!empty($this->request['categoria'])) {
+          $query = "UPDATE categoriaProd SET categoria = '{$this->request['categoria']}' WHERE Id_categoria = {$this->request['id']}";
           $this->database->query($query);
 
           return $this->database->affected_rows;

@@ -3,6 +3,11 @@ require_once 'bootstrap.php';
 
 $producto = new producto();
 
+if(!empty($_GET['id'])) {
+
+  $producto = new producto($_REQUEST);
+  $item = $producto->findById();
+}
 ?>
 <!DOCTYPE html>
 
@@ -21,7 +26,7 @@ $producto = new producto();
 <br>
 <br>
 <div class="form-group">
-<a href="/FormularioProductos.php">Nuevo</a>
+<a href="/FormularioProductos.php" class ="btn btn-large btn-success">Nuevo</a>
 
 </div >
 <body>
@@ -35,7 +40,7 @@ $producto = new producto();
       <th scope="col">Stock</th>
       <th scope="col">Categoria</th>
       <th scope="col">Accion</th>
-      <th scope="col">Accion</th>
+     
     </tr>
 </thead>
 <?php foreach ($producto->findAll() as $item): ?>
@@ -43,9 +48,12 @@ $producto = new producto();
     <th><?php echo $item->descripcion_Prod?></th>
     <th><?php echo $item->Precio?></th>
     <th><?php echo $item->cant_Producto ?></th>
-    <th><?php echo $item->categoria_Id?></th>
-    <th >Editar</th>
-   <th>Eliminar</th>
+    <th><?php echo $item->categoria?></th>
+    <th>
+    <a href="deleteProd.php?id=<?php echo $item->Id_Producto?>" class ="btn btn-large btn-danger">Eliminar</a> 
+    <a href="FormularioProductos.php?id=<?php echo $item->Id_Producto?>" class ="btn btn-large btn-warning">Editar</a>
+    </th>
+   
   </tr>
 <?php endforeach; ?>
 

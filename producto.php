@@ -37,7 +37,8 @@ SQL;
 
     
     public function findAll(): array {
-        $query = 'SELECT Id_Producto, descripcion_Prod, Precio, cant_Producto, categoria_Id FROM producto';
+        //$query = 'SELECT Id_Producto, descripcion_Prod, Precio, cant_Producto, categoria_Id FROM producto';
+        $query = 'SELECT  Id_Producto, descripcion_Prod, Precio, cant_Producto, categoria  from producto, categoriaProd where producto.categoria_Id = categoriaProd.Id_categoria';
         $result = $this->database->query($query);
 
         $records = [];
@@ -50,7 +51,7 @@ SQL;
 
    
     public function findById(): object {
-        $query = "SELECT Id_Producto, descripcion_Prod, Precio, cant_Producto, categoria_Id FROM producto WHERE id = " . $this->request['id'];
+        $query = "SELECT Id_Producto, descripcion_Prod, Precio, cant_Producto, categoria_Id FROM producto WHERE Id_Producto = " . $this->request['id'];
         $result = $this->database->query($query);
 
         return $result->fetch_object();
@@ -58,14 +59,14 @@ SQL;
 
     
     public function deleteById($id): bool {
-        return $this->database->query("DELETE FROM stuff WHERE id={$id}");
+        return $this->database->query("DELETE FROM producto WHERE Id_Producto={$id}");
     }
 
    
     public function updateItem() {
         if(!empty($this->request['descripcion_Prod']) && !empty($this->request['Precio'])  && !empty($this->request['cant_Producto']) && !empty($this->request['categoria_Id'])) {
             
-          $query = "UPDATE producto SET descripcion_Prod = '{$this->request['descripcion_Prod']}', Precio = '{$this->request['Precio']}' , cant_Producto = '{$this->request['cant_Producto']}' , categoria_Id = '{$this->request['categoria_Id']}' WHERE id = {$this->request['id']}";
+          $query = "UPDATE producto SET descripcion_Prod = '{$this->request['descripcion_Prod']}', Precio = '{$this->request['Precio']}' , cant_Producto = '{$this->request['cant_Producto']}' , categoria_Id = '{$this->request['categoria_Id']}' WHERE Id_Producto = {$this->request['id']}";
           $this->database->query($query);
 
           return $this->database->affected_rows;
@@ -77,4 +78,6 @@ SQL;
     {
         $this->database->close();
     }
+
+   
 }

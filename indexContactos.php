@@ -1,9 +1,14 @@
 <?php
 require_once 'bootstrap.php';
 
-$categoria = new categoria();
-
+$contacto = new contacto();
+$user = new Users();
+if($user->isAnonymous()) {
+    header('Location: /login.php');
+}
 ?>
+
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -13,7 +18,7 @@ $categoria = new categoria();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Index - Productos</title>
+    <title>Index - contacto</title>
 </head>
 
 <br>
@@ -21,29 +26,24 @@ $categoria = new categoria();
 <br>
 <br>
 <div class="form-group">
-<a href="/FormularioCategoria.php" class ="btn btn-large btn-success">Nuevo</a>
 
 </div >
 <body>
 
 <?php include("Funciones/menuindex.php")?>
-
 <table class="table table-bordered table-hover">
 <thead>
 <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Accion</th>
-      
+      <th scope="col">Correo</th>
+      <th scope="col">Mensaje</th>
+     
     </tr>
 </thead>
-<?php foreach ($categoria->findAll() as $item): ?>
+<?php foreach ($contacto->findAll() as $item): ?>
 <tr>
-    <th><?php echo $item->categoria?></th>
-   <th>
-    <a href="deleteCat.php?id=<?php echo $item->Id_categoria?>" class ="btn btn-large btn-danger">Eliminar</a>
-    <a href="FormularioCategorias.php?id=<?php echo $item->Id_categoria?>" class ="btn btn-large btn-warning">Editar</a>
-    </th>
-   
+    <th><?php echo $item->email?></th>
+   <th><?php echo $item->mensaje?></th>
+  
   </tr>
 <?php endforeach; ?>
 
