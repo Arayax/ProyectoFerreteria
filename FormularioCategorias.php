@@ -47,7 +47,7 @@ if($user->isAnonymous()) {
   <div class="form-group col-md-4 col-sm-4">
 
     <label for="descripcion_Prod">Categoria del producto</label>
-    <input type="text" class="form-control" id="descripcion_Prod" name="descripcion_Prod" placeholder="Categoria" autocomplete="off" value="<?php echo isset($item) ? $item->descripcion_Prod : null ?>">
+    <input type="text" class="form-control" id="descripcion_Prod" name="descripcion_Prod" placeholder="Categoria" autocomplete="off" value="<?php echo isset($item) ? $item->categoria : null ?>">
 
   </div>
 

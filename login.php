@@ -13,6 +13,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']) {
     }
 }
 ?>
+<!doctype html>
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <head>
@@ -21,7 +22,7 @@ if('POST' == $_SERVER['REQUEST_METHOD']) {
 
 </head>
 
-<body >
+<body class="text-center">
 <?php include("Funciones/menulogin.php")?>
 <?php if(!is_null($message)): ?>
 
@@ -32,21 +33,22 @@ if('POST' == $_SERVER['REQUEST_METHOD']) {
 <br>
 <br>
 <br>
-<form   align="center" action="login.php" method="post" class="border border-success">
+<form  action="login.php" method="post" class="form-signin">
 
-<div class="form-group col-md-4 col-sm-4">
+
+<div class="form-group">
     <label for="username">Username</label> 
     <input type="text"  class="form-control" name="username" id="username" autocomplete="off" /><br>
 
     </div >
 
-    <div   class="form-group col-md-4 col-sm-4">
+    <div   class="form-group">
     <label for="password">Password</label> 
     <input type="password"   class="form-control" name="password" id="password" autocomplete="off" /><br>
     </div >
 
    
-   <div  class="form-group col-md-4 col-sm-4">
+   <div>
 <input type="submit" class="btn btn-outline-success" value="Log-in">
 
 
