@@ -3,22 +3,6 @@ require_once 'bootstrap.php';
 
 $categoria = new categoria();
 
-
-$user = new Users();
-if($user->isAnonymous()) {
-    header('Location: /IndexOnlyReadCategoria.php');
-
-
-  
-}
-if($user->login()) {
-
-  header('Location: /indexCategoria.php');
-
-
-}
-
-
 ?>
 <!DOCTYPE html>
 
@@ -48,17 +32,14 @@ if($user->login()) {
 <thead>
 <tr>
       <th scope="col">Nombre</th>
-      <th scope="col">Accion</th>
+    
       
     </tr>
 </thead>
 <?php foreach ($categoria->findAll() as $item): ?>
 <tr>
     <th><?php echo $item->categoria?></th>
-   <th>
-    <a href="deleteCat.php?id=<?php echo $item->Id_categoria?>" class ="btn btn-large btn-danger">Eliminar</a>
-    <a href="FormularioCategorias.php?id=<?php echo $item->Id_categoria?>" class ="btn btn-large btn-warning">Editar</a>
-    </th>
+ 
    
   </tr>
 <?php endforeach; ?>

@@ -8,6 +8,20 @@ if(!empty($_GET['id'])) {
   $producto = new producto($_REQUEST);
   $item = $producto->findById();
 }
+
+$user = new Users();
+if($user->isAnonymous()) {
+    header('Location: /IndexOnlyReadProductos.php');
+
+
+  
+}
+if($user->login()) {
+
+  header('Location: /indexProductos.php');
+
+
+}
 ?>
 <!DOCTYPE html>
 
@@ -33,7 +47,7 @@ if(!empty($_GET['id'])) {
 
 </div >
 <body>
-<?php include("Funciones/menuindex.php")?>
+<?php include("Funciones/menu.php")?>
 
 <table id="tablaproductos" class="table">
 <thead>

@@ -17,30 +17,15 @@ $user = new Users();
       <li class="nav-item active">
         <a class="nav-link" href="../index.php">Inicio <span class="sr-only">(current)</span></a>
       </li>
-  <?php   if ($user->isAnonymous()):  ?>
-   
-  
+
       <li class="nav-item">
         <a class="nav-link"  id="login" display ="true" href="../login.php">Log in</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"   id="logout" display ="false" href="../logout.php">Log out</a>
       </li>
-      <?php else:?> 
-
-        <li class="nav-item">
-        <a class="nav-link"  id="login" display ="false" href="../login.php">Log in</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link"   id="logout" display ="true" href="../logout.php">Log out</a>
-      </li>
-
-      <?php endif;?> 
-      <li class="nav-item">
-        <a class="nav-link"   id="logout" href="../FormularioContactos.php">Contactanos</a>
-      </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administracion</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
 
           <a href="../indexProductos.php" class="dropdown-item" href="#">Productos</a>

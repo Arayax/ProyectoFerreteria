@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 
 $categoria = new Categoria($_GET);
 
-if(!empty($_GET['descripcion_Prod']) && !isset($_GET['id'])) 
+if(!empty($_GET['categoria']) && !isset($_GET['id'])) 
 {
 
 $id = $categoria->create();
@@ -47,7 +47,7 @@ if($user->isAnonymous()) {
   <div class="form-group col-md-4 col-sm-4">
 
     <label for="descripcion_Prod">Categoria del producto</label>
-    <input type="text" class="form-control" id="descripcion_Prod" name="descripcion_Prod" placeholder="Categoria" autocomplete="off" value="<?php echo isset($item) ? $item->categoria : null ?>">
+    <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Categoria" autocomplete="off" value=""<?php echo isset($item) ? $item->categoria : null ?>">
 
   </div>
 

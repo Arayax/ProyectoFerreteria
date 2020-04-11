@@ -4,8 +4,18 @@ require_once 'bootstrap.php';
 $contacto = new contacto();
 $user = new Users();
 if($user->isAnonymous()) {
-    header('Location: /login.php');
+    header('Location: /FormularioContactos.php');
+
+
+  
 }
+if($user->login()) {
+
+  header('Location: /indexContactos.php');
+
+
+}
+
 ?>
 
 
@@ -32,7 +42,7 @@ if($user->isAnonymous()) {
 </div >
 <body>
 
-<?php include("Funciones/menuindex.php")?>
+<?php include("Funciones/menu.php")?>
 <table id="contactos" class="table table-bordered table-hover">
 <thead>
 <tr>

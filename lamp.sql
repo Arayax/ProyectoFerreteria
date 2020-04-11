@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: Apr 04, 2020 at 11:50 PM
+-- Generation Time: Apr 11, 2020 at 04:36 AM
 -- Server version: 5.7.29
 -- PHP Version: 7.2.2
 
@@ -30,17 +30,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categoriaProd` (
   `Id_categoria` int(10) UNSIGNED NOT NULL,
-  `descripcion_Prod` varchar(255) DEFAULT NULL
+  `categoria` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `categoriaProd`
 --
 
-INSERT INTO `categoriaProd` (`Id_categoria`, `descripcion_Prod`) VALUES
+INSERT INTO `categoriaProd` (`Id_categoria`, `categoria`) VALUES
 (1, 'golpeo'),
 (2, 'atornillar'),
-(3, 'unión');
+(3, 'unión'),
+(4, 'Medida'),
+(5, 'corte'),
+(6, 'trazado'),
+(7, 'serrar'),
+(8, 'rebajar '),
+(9, 'taladrado'),
+(10, 'taladrado'),
+(12, 'construcción');
 
 -- --------------------------------------------------------
 
@@ -53,6 +61,13 @@ CREATE TABLE `contacto` (
   `email` varchar(255) NOT NULL,
   `mensaje` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `contacto`
+--
+
+INSERT INTO `contacto` (`Id_contacto`, `email`, `mensaje`) VALUES
+(1, 'araya8025@gmail.com', 'hola prueba');
 
 -- --------------------------------------------------------
 
@@ -74,8 +89,8 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`Id_Producto`, `descripcion_Prod`, `Precio`, `cant_Producto`, `categoria_Id`) VALUES
 (1, 'Martillo', 15000, 5, 1),
-(3, 'Goma blanca', 3000, 5, 3),
-(6, 'Clavos', 2500, 250, 3);
+(9, 'Cierra', 500, 5, 5),
+(10, 'Tornillo', 250, 300, 3);
 
 -- --------------------------------------------------------
 
@@ -133,19 +148,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categoriaProd`
 --
 ALTER TABLE `categoriaProd`
-  MODIFY `Id_categoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_categoria` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `Id_contacto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_contacto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `Id_Producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id_Producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
