@@ -39,7 +39,7 @@ if($user->isAnonymous()) {
 <br>
 <br>
 <br>
-<h2>Nueva mensaje<h2>
+<h2>Nueva mensaje</h2>
 <form action="FormularioContactos.php" method="get">
 
   <div class="form-group col-md-4 col-sm-4">

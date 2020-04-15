@@ -39,7 +39,7 @@ if($user->isAnonymous()) {
 <br>
 <br>
 <br>
-<h2>Nueva Categoria<h2>
+<h2>Nueva Categoria</h2>
 <form action="FormularioCategorias.php" method="get">
 <?php if(isset($item)): ?>
         <input type="hidden" name="id" value="<?php echo $item->Id_categoria?>">

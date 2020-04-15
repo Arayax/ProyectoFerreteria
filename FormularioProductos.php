@@ -2,6 +2,10 @@
 require_once 'bootstrap.php';  
 
 $Producto = new producto($_GET);
+$categoria = new categoria($_GET);
+
+
+$todasCategorias = $categoria ->findAll();
 
 
 if(!empty($_GET['descripcion_Prod']) && !empty($_GET['Precio']) && !empty($_GET['cant_Producto']) && !empty($_GET['categoria_Id']) && !isset($_GET['id'])) {
@@ -38,7 +42,7 @@ if($user->isAnonymous()) {
 <br>
 <br>
 <br>
-<h2>Nuevo producto<h2>
+<h2>Nuevo producto</h2>
 <form action="FormularioProductos.php" method="get">
 <?php if(isset($item)): ?>
         <input type="hidden" name="id" value="<?php echo $item->Id_Producto ?>">
@@ -67,9 +71,22 @@ if($user->isAnonymous()) {
 <div class="form-group col-md-4 col-sm-4">
   
   <label for="categoria_Id">Categoria:</label>
-  <input type="text" class="form-control" id="categoria_Id" name="categoria_Id" placeholder="Categoria del producto" autocomplete="off"   value="<?php echo isset($item) ? $item->categoria_Id : null ?>">
+  <!-- <input type="text" class="form-control" id="categoria_Id" name="categoria_Id" placeholder="Categoria del producto" autocomplete="off"   value="<?php echo isset($item) ? $item->categoria_Id : null ?>"> -->
+
+  <select class="form-control" id="categoria_Id" name="categoria_Id">
+  <option value="0"selected>Elija la Categoria</option>
+  <?php foreach($todasCategorias as $option): ?>
+
+<option value="<?php echo isset($option) ? $option->Id_categoria: null ?>" ><?php echo $option->categoria?></option>
+
+<?php endforeach; ?>
+
+ 
+  
+</select>
 
 </div>
+
 
 <div class="form-group col-md-4 col-sm-4">
 <input type="submit" class="btn btn-outline-success" value="Guardar">
