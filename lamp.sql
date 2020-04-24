@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: Apr 11, 2020 at 04:36 AM
+-- Generation Time: Apr 24, 2020 at 12:52 AM
 -- Server version: 5.7.29
 -- PHP Version: 7.2.2
 
@@ -47,7 +47,6 @@ INSERT INTO `categoriaProd` (`Id_categoria`, `categoria`) VALUES
 (7, 'serrar'),
 (8, 'rebajar '),
 (9, 'taladrado'),
-(10, 'taladrado'),
 (12, 'construcción');
 
 -- --------------------------------------------------------
@@ -80,6 +79,7 @@ CREATE TABLE `producto` (
   `descripcion_Prod` varchar(255) NOT NULL,
   `Precio` float NOT NULL,
   `cant_Producto` int(11) NOT NULL,
+  `url_img` varchar(255) DEFAULT NULL,
   `categoria_Id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -87,10 +87,12 @@ CREATE TABLE `producto` (
 -- Dumping data for table `producto`
 --
 
-INSERT INTO `producto` (`Id_Producto`, `descripcion_Prod`, `Precio`, `cant_Producto`, `categoria_Id`) VALUES
-(1, 'Martillo', 15000, 5, 1),
-(9, 'Cierra', 500, 5, 5),
-(10, 'Tornillo', 250, 300, 3);
+INSERT INTO `producto` (`Id_Producto`, `descripcion_Prod`, `Precio`, `cant_Producto`, `url_img`, `categoria_Id`) VALUES
+(1, 'Martillo', 15000, 5, NULL, 1),
+(9, 'Cierra', 500, 5, NULL, 5),
+(10, 'Tornillo', 250, 300, NULL, 2),
+(11, 'Mazo', 5500, 5, NULL, 5),
+(12, 'Taladro', 15000, 5, NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,7 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT for table `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `Id_Producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id_Producto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`

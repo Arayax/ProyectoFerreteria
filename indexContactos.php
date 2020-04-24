@@ -3,6 +3,7 @@ require_once 'bootstrap.php';
 
 $contacto = new contacto();
 $user = new Users();
+
 if($user->isAnonymous()) {
     header('Location: /FormularioContactos.php');
 

@@ -8,7 +8,7 @@ $categoria = new categoria($_GET);
 $todasCategorias = $categoria ->findAll();
 
 
-if(!empty($_GET['descripcion_Prod']) && !empty($_GET['Precio']) && !empty($_GET['cant_Producto']) && !empty($_GET['categoria_Id']) && !isset($_GET['id'])) {
+if(!empty($_GET['descripcion_Prod']) && !empty($_GET['Precio']) && !empty($_GET['cant_Producto'])  && !empty($_GET['categoria_Id']) && !isset($_GET['id'])) {
 
   $id = $Producto->create();
 
@@ -19,6 +19,17 @@ $updated = $Producto->updateItem();
 $item = $Producto->findById();
 
 }
+// if(isset($_POST['submit']))
+// {
+  
+// move_uploaded_file($_FILES['image']['tmp_name'],"imagenes/$url_img");
+
+//   $Producto->create();
+
+
+// }
+
+
 $user = new Users();
 if($user->isAnonymous()) {
     header('Location: /login.php');
@@ -43,7 +54,7 @@ if($user->isAnonymous()) {
 <br>
 <br>
 <h2>Nuevo producto</h2>
-<form action="FormularioProductos.php" method="get">
+<form action="FormularioProductos.php" method="get" enctype="multipart/form-data">
 <?php if(isset($item)): ?>
         <input type="hidden" name="id" value="<?php echo $item->Id_Producto ?>">
     <?php endif; ?>
@@ -53,7 +64,7 @@ if($user->isAnonymous()) {
     <input type="text" class="form-control" id="descripcion_Prod" name="descripcion_Prod" placeholder="Descripcion del Producto" autocomplete="off" value="<?php echo isset($item) ? $item->descripcion_Prod : null ?>" >
 
 </div>
-  <div class="form-group col-md-4 col-sm-4">
+  <div  class="form-group col-md-4 col-sm-4">
   
     <label for="Precio">Precio:</label>
     <input type="text" class="form-control" id="Precio" name="Precio" placeholder="Precio" autocomplete="off"  value="<?php echo isset($item) ? $item->Precio : null ?>"  >
@@ -66,7 +77,14 @@ if($user->isAnonymous()) {
   <label for="cant_Producto">Stock:</label>
   <input type="text" class="form-control" id="cant_Producto" name="cant_Producto" placeholder="Stock" autocomplete="off"  value="<?php echo isset($item) ? $item->cant_Producto : null ?>">
 
+</div  class="form-group col-md-4 col-sm-4">
+
+<label for="url_img">Imagen:</label> <br>
+<input type="file" name="image" value="<?php echo isset($item) ? $item->url_img : null ?>"/> 
+<div>
+
 </div>
+
 
 <div class="form-group col-md-4 col-sm-4">
   
@@ -89,7 +107,7 @@ if($user->isAnonymous()) {
 
 
 <div class="form-group col-md-4 col-sm-4">
-<input type="submit" class="btn btn-outline-success" value="Guardar">
+<input type="submit" class="btn btn-outline-success" name="submit" value="Guardar">
 
 
 </div>
@@ -97,6 +115,11 @@ if($user->isAnonymous()) {
 
 
 </body>
+
+
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
